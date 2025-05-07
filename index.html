@@ -1,207 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EarnBee</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            max-width: 360px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #121212; /* Deep dark background */
-            color: #ffffff; /* White text */
-        }
-        .container {
-            background-color: #1E1E1E; /* Dark container */
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            color: #FF9800; /* Orange accent */
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-        .header p {
-            color: #B0B0B0; /* Light gray */
-            font-size: 14px;
-        }
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .stat-item {
-            padding: 10px;
-        }
-        .stat-value {
-            font-size: 24px;
-            font-weight: 500;
-            color: #FF9800; /* Orange accent */
-        }
-        .stat-label {
-            font-size: 12px;
-            color: #B0B0B0; /* Light gray */
-        }
-        .progress-container {
-            width: 100%;
-            background-color: #2D2D2D; /* Dark gray */
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        .progress-bar {
-            height: 10px;
-            border-radius: 10px;
-            background-color: #FF9800; /* Orange accent */
-            width: 0%;
-            transition: width 0.5s;
-        }
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        button {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .primary-btn {
-            background-color: #FF9800; /* Orange accent */
-            color: #121212; /* Dark text for better contrast */
-        }
-        .secondary-btn {
-            background-color: #2D2D2D; /* Dark gray */
-            color: #FF9800; /* Orange text */
-            border: 1px solid #FF9800; /* Orange border */
-        }
-        .primary-btn:hover {
-            background-color: #F57C00; /* Darker orange */
-            transform: translateY(-2px);
-        }
-        .secondary-btn:hover {
-            background-color: #3D3D3D; /* Lighter dark gray */
-        }
-        #progressText {
-            color: #B0B0B0; /* Light gray */
-        }
-        /* Custom Dialog Box */
-        .dialog {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        .dialog-content {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            text-align: center;
-        }
-        .dialog button {
-            background-color: #FF9800;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Earn Bee</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    .container {
+      max-width: 300px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff6d00;
+      margin-bottom: 5px;
+    }
+
+    .dev {
+      color: #bbb;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+    }
+
+    .stats h2 {
+      margin: 0;
+      font-size: 1.5em;
+      color: white;
+    }
+
+    .stats p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    .progress-bar {
+      background-color: #333;
+      border-radius: 8px;
+      height: 10px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      background-color: #ff6d00;
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      margin-bottom: 15px;
+    }
+
+    .main-button {
+      background-color: #ff6d00;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 1em;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .outline-button {
+      background-color: transparent;
+      color: #ff6d00;
+      border: 1px solid #ff6d00;
+      padding: 10px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 1em;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Earn Bee</h1>
-            <p>Developed by TC RAKIN</p>
-        </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-value" id="watchedAds">0</div>
-                <div class="stat-label">Watched Ads</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="earnedPoints">0</div>
-                <div class="stat-label">Earned Points</div>
-            </div>
-        </div>
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div style="text-align: center; margin-bottom: 20px;" id="progressText">0%</div>
-        
-        <div class="buttons">
-            <button class="primary-btn" id="watchAdBtn">Watch Ad</button>
-            <button class="secondary-btn" id="autoShowBtn">Auto Show Ads</button>
-            <button class="secondary-btn" id="stopAutoBtn" disabled>Stop Auto Ads</button>
-        </div>
+  <div class="container">
+    <h1>Earn Bee</h1>
+    <p class="dev">Developed by TC RAKIN</p>
+
+    <div class="stats">
+      <div>
+        <h2 id="watched">0</h2>
+        <p>Watched Ads</p>
+      </div>
+      <div>
+        <h2 id="points">0</h2>
+        <p>Earned Points</p>
+      </div>
     </div>
 
-    <!-- Moneta Ads Script -->
-    <script src='//whephiwums.com/sdk.js' data-zone='9303184' data-sdk='show_9303184'></script>
-
-    <!-- Error Dialog Box -->
-    <div class="dialog" id="errorDialog">
-        <div class="dialog-content">
-            <p>Sorry, the ad couldn't be loaded. Please try again later.</p>
-            <button onclick="closeDialog()">Close</button>
-        </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressBar"></div>
     </div>
+    <p class="progress-text" id="progressText">0%</p>
 
-    <script>
-        // Function to check if the SDK is loaded
-        function checkAdSDK() {
-            if (typeof monetaSDK !== 'undefined' && monetaSDK.showAd) {
-                console.log("Moneta SDK is loaded and ready.");
-                return true;
-            } else {
-                console.log("Error: Moneta SDK is not loaded.");
-                return false;
-            }
+    <button class="main-button" onclick="watchAd()">Watch Ad</button>
+    <button class="outline-button" onclick="startAutoAds()">Auto Show Ads</button>
+    <button class="outline-button" onclick="stopAutoAds()">Stop Auto Ads</button>
+  </div>
+
+  <!-- Monetag Ad Script -->
+  <script src='//whephiwums.com/sdk.js' data-zone='9303184' data-sdk='show_9303184'></script>
+
+  <script>
+    let watched = parseInt(localStorage.getItem('watched')) || 0;
+    let points = parseInt(localStorage.getItem('points')) || 0;
+    let autoMode = false;
+    let adShowing = false;
+    const progressStep = 10; // 10% increase per ad
+
+    function updateUI() {
+      document.getElementById('watched').innerText = watched;
+      document.getElementById('points').innerText = points;
+      let percent = Math.min((points / 100) * 100, 100);
+      document.getElementById('progressBar').style.width = percent + "%";
+      document.getElementById('progressText').innerText = Math.floor(percent) + "%";
+      // Save to localStorage
+      localStorage.setItem('watched', watched);
+      localStorage.setItem('points', points);
+    }
+
+    function showAd(callback) {
+      adShowing = true;
+
+      // Show ad via Monetag SDK
+      try {
+        if (typeof show_9303184 === 'function') {
+          show_9303184();
         }
+      } catch (e) {
+        console.log("Ad show error:", e);
+      }
 
-        // Show ad when clicking the button
-        document.getElementById('watchAdBtn').addEventListener('click', function() {
-            if (checkAdSDK()) {
-                try {
-                    // Trigger the Moneta ad SDK to show the ad
-                    monetaSDK.showAd();
-                    console.log("Ad shown successfully.");
-                } catch (e) {
-                    console.error("Error showing ad: ", e);
-                    showErrorDialog();
-                }
-            } else {
-                showErrorDialog();
-            }
+      // After 10s: Add points and update progress
+      setTimeout(() => {
+        points += progressStep;
+        updateUI();
+      }, 10000);
+
+      // After 20s: Mark ad complete
+      setTimeout(() => {
+        watched++;
+        adShowing = false;
+        updateUI();
+
+        // Wait 5s more then run next
+        setTimeout(() => {
+          if (typeof callback === 'function') callback();
+        }, 5000);
+
+      }, 20000);
+    }
+
+    function watchAd() {
+      if (adShowing) return;
+      showAd();
+    }
+
+    function startAutoAds() {
+      if (autoMode) return;
+      autoMode = true;
+      runAutoAds();
+    }
+
+    function stopAutoAds() {
+      autoMode = false;
+    }
+
+    function runAutoAds() {
+      if (!autoMode) return;
+
+      if (!adShowing) {
+        showAd(() => {
+          if (autoMode) runAutoAds();
         });
+      } else {
+        setTimeout(runAutoAds, 1000);
+      }
+    }
 
-        // Function to show the error dialog
-        function showErrorDialog() {
-            document.getElementById('errorDialog').style.display = 'flex';
-        }
-
-        // Function to close the error dialog
-        function closeDialog() {
-            document.getElementById('errorDialog').style.display = 'none';
-        }
-    </script>
+    updateUI();
+  </script>
 </body>
 </html>
